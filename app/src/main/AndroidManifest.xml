@@ -13,10 +13,7 @@
         android:theme="@style/Theme.CarteiraVirtual"
         tools:targetApi="31">
         <activity
-            android:name=".ConverterRecursos"
-            android:exported="false" />
-        <activity
-            android:name=".ListarRecursos"
+            android:name=".ConverterRecursosActivity"
             android:exported="false" />
         <activity
             android:name=".Deposito"

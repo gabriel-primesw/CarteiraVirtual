@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -12,21 +11,21 @@
         android:layout_height="wrap_content"
         android:text="Selecione as moedas e o valor:"
         android:textSize="16sp"
-        android:marginBottom="16dp" />
+        android:layout_marginBottom="16dp" />
 
     <Spinner
         android:id="@+id/origemSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Moeda Origem"
-        android:marginBottom="16dp" />
+        android:layout_marginBottom="16dp" />
 
     <Spinner
         android:id="@+id/destinoSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Moeda Destino"
-        android:marginBottom="16dp" />
+        android:layout_marginBottom="16dp" />
 
     <EditText
         android:id="@+id/valorEditText"
@@ -34,14 +33,14 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:hint="Valor para converter"
-        android:marginBottom="16dp" />
+        android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/converterButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Converter"
-        android:marginBottom="16dp" />
+        android:layout_marginBottom="16dp" />
 
     <ProgressBar
         android:id="@+id/progressBar"

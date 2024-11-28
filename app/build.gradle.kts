@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "ufpr.br.carteiravirtual"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "ufpr.br.carteiravirtual"
         minSdk = 30
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
