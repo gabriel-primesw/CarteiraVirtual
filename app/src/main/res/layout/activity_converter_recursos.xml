@@ -1,10 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ConverterRecursos">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Selecione as moedas e o valor:"
+        android:textSize="16sp"
+        android:marginBottom="16dp" />
+
+    <Spinner
+        android:id="@+id/origemSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Moeda Origem"
+        android:marginBottom="16dp" />
+
+    <Spinner
+        android:id="@+id/destinoSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Moeda Destino"
+        android:marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/valorEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:hint="Valor para converter"
+        android:marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/converterButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Converter"
+        android:marginBottom="16dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center" />
+</LinearLayout>
