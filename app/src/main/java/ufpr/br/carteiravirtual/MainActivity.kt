@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
         // Listener para o botão de listar recursos
         listResourcesButton.setOnClickListener {
-            val intent = Intent(this, ItemMoedaViewHolder::class.java)
+            val intent = Intent(this, ListarRecursosActivity::class.java)
             startActivity(intent)
         }
 
