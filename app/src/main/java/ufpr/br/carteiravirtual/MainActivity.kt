@@ -1,5 +1,6 @@
 package ufpr.br.carteiravirtual
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -49,6 +50,8 @@ class MainActivity : AppCompatActivity() {
 
     // Atualiza o TextView do saldo
     private fun atualizarSaldo() {
+        val prefs = getSharedPreferences("wallet", Context.MODE_PRIVATE)
+        saldo = prefs.getFloat("BRL", 0f).toDouble()
         saldoTextView.text = "Saldo: R$ %.2f".format(saldo)
     }
 
@@ -58,6 +61,11 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == REQUEST_DEPOSIT && resultCode == RESULT_OK) {
             val valorDeposito = data?.getDoubleExtra(EXTRA_DEPOSIT_AMOUNT, 0.0) ?: 0.0
             saldo += valorDeposito
+            val prefs = getSharedPreferences("wallet", Context.MODE_PRIVATE)
+            with(prefs.edit()) {
+                putFloat("BRL", saldo.toFloat())
+                apply()
+            }
             atualizarSaldo()
         }
     }

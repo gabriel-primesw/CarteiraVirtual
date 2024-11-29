@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +18,16 @@ class ListarRecursosActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listar_recursos)
+
+        // Configurar a Toolbar
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
 
         recyclerView = findViewById(R.id.recursosRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -39,17 +50,6 @@ class ListarRecursosActivity : AppCompatActivity() {
         )
 
         return recursos
-    }
-}
-
-// ViewHolder para exibir o nome e valor da moeda
-class ItemMoedaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val nomeMoedaTextView: TextView = view.findViewById(R.id.nomeMoedaTextView)
-    val valorMoedaTextView: TextView = view.findViewById(R.id.valorMoedaTextView)
-
-    fun bind(nome: String, valor: String) {
-        nomeMoedaTextView.text = nome
-        valorMoedaTextView.text = valor
     }
 }
 

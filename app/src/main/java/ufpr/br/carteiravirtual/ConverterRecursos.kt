@@ -23,20 +23,17 @@ class ConverterRecursosActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_converter_recursos)
 
-        // Inicializar as views
         origemSpinner = findViewById(R.id.origemSpinner)
         destinoSpinner = findViewById(R.id.destinoSpinner)
         valorEditText = findViewById(R.id.valorEditText)
         converterButton = findViewById(R.id.converterButton)
         progressBar = findViewById(R.id.progressBar)
 
-        // Configurar os Spinners com as moedas disponíveis
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, moedas)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         origemSpinner.adapter = adapter
         destinoSpinner.adapter = adapter
 
-        // Configurar o botão "Converter"
         converterButton.setOnClickListener {
             val moedaOrigem = origemSpinner.selectedItem.toString()
             val moedaDestino = destinoSpinner.selectedItem.toString()
@@ -58,13 +55,10 @@ class ConverterRecursosActivity : AppCompatActivity() {
     }
 
     private fun realizarConversao(moedaOrigem: String, moedaDestino: String, valor: Double) {
-        // Mostrar o ProgressBar
         progressBar.visibility = View.VISIBLE
 
-        // Realizar a chamada da API usando coroutines
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                // Chamada fictícia para simular a API (substituir pelo real)
                 val taxa = obterTaxaDeConversao(moedaOrigem, moedaDestino)
                 val valorConvertido = valor * taxa
 
@@ -89,13 +83,11 @@ class ConverterRecursosActivity : AppCompatActivity() {
         }
     }
 
-    private suspend fun obterTaxaDeConversao(moedaOrigem: String, moedaDestino: String): Double {
-        // Substitua este método por uma chamada real à AwesomeAPI
-        // Exemplo fictício: 1.0 para mesma moeda ou uma taxa arbitrária
+    private fun obterTaxaDeConversao(moedaOrigem: String, moedaDestino: String): Double {
         return when {
             moedaOrigem == "BRL" && moedaDestino == "USD" -> 0.20
             moedaOrigem == "USD" && moedaDestino == "BRL" -> 5.0
-            else -> 1.0 // Substitua pelos valores corretos
+            else -> 1.0
         }
     }
 }

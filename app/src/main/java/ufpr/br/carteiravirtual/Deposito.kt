@@ -30,7 +30,8 @@ class Deposito : AppCompatActivity() {
                     putExtra(EXTRA_DEPOSIT_AMOUNT, valor)
                 }
                 setResult(Activity.RESULT_OK, resultIntent)
-                finish() // Finaliza a Activity
+                finish()
+            // Finaliza a Activity
             } else {
                 // Exibe um aviso se o valor for inválido
                 Toast.makeText(this, "Por favor, insira um valor válido.", Toast.LENGTH_SHORT).show()
