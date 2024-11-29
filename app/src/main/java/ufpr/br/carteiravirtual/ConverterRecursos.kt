@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,7 +18,7 @@ class ConverterRecursosActivity : AppCompatActivity() {
     private lateinit var converterButton: Button
     private lateinit var progressBar: ProgressBar
 
-    private val moedas = listOf("BRL", "USD", "EUR", "BTC", "ETH") // Moedas disponíveis
+    private val moedas = listOf("BRL", "USD", "EUR", "BTC", "ETH")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +29,15 @@ class ConverterRecursosActivity : AppCompatActivity() {
         valorEditText = findViewById(R.id.valorEditText)
         converterButton = findViewById(R.id.converterButton)
         progressBar = findViewById(R.id.progressBar)
+
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, moedas)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -40,12 +50,17 @@ class ConverterRecursosActivity : AppCompatActivity() {
             val valor = valorEditText.text.toString().toDoubleOrNull()
 
             if (valor == null || valor <= 0) {
-                Toast.makeText(this, "Insira um valor válido para conversão.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Insira um valor válido para conversão.", Toast.LENGTH_SHORT)
+                    .show()
                 return@setOnClickListener
             }
 
             if (moedaOrigem == moedaDestino) {
-                Toast.makeText(this, "Selecione moedas diferentes para a conversão.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Selecione moedas diferentes para a conversão.",
+                    Toast.LENGTH_SHORT
+                ).show()
                 return@setOnClickListener
             }
 
