@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         // Listener para o botão de converter recursos
         convertResourcesButton.setOnClickListener {
             val intent = Intent(this, ConverterRecursosActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, REQUEST_CONVERT)
         }
     }
 
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         saldoTextView.text = "Saldo: R$ %.2f".format(saldo)
     }
 
-    // Gerenciar o resultado de Activities, como depósito
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_DEPOSIT && resultCode == RESULT_OK) {
@@ -66,13 +66,15 @@ class MainActivity : AppCompatActivity() {
                 putFloat("BRL", saldo.toFloat())
                 apply()
             }
-            atualizarSaldo()
         }
+        atualizarSaldo()
     }
 
     companion object {
         const val REQUEST_DEPOSIT = 1
+        const val REQUEST_CONVERT = 2
         const val EXTRA_DEPOSIT_AMOUNT = "EXTRA_DEPOSIT_AMOUNT"
+        const val EXTRA_CONVERTED_AMOUNT = "EXTRA_CONVERTED_AMOUNT"
     }
 }
 
