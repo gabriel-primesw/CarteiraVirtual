@@ -31,6 +31,7 @@ class ConverterRecursosActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBar)
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
+        toolbar.title = "Converter Recursos"
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)

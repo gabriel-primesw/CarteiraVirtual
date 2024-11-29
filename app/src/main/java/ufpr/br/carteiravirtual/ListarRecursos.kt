@@ -19,8 +19,9 @@ class ListarRecursosActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listar_recursos)
 
-        // Configurar a Toolbar
         val toolbar: Toolbar = findViewById(R.id.toolbar)
+        toolbar.title = "Seus Recursos"
+
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)

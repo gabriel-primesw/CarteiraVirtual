@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 
 class Deposito : AppCompatActivity() {
 
@@ -20,6 +21,16 @@ class Deposito : AppCompatActivity() {
         // Inicializar as views
         valorEditText = findViewById(R.id.valorEditText)
         depositarButton = findViewById(R.id.depositarButton)
+
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        toolbar.title = "Depósito"
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
 
         // Configurar o listener do botão "Depositar"
         depositarButton.setOnClickListener {
