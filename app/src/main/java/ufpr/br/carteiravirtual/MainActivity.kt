@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var saldoTextView: TextView
@@ -20,6 +21,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val prefs = getSharedPreferences("wallet", Context.MODE_PRIVATE)
+        val firstAttempt : Boolean = prefs.getBoolean("firstAttempt", false)
+
         // Inicializar as views
         saldoTextView = findViewById(R.id.saldoTextView)
         depositButton = findViewById(R.id.depositButton)
@@ -27,7 +31,14 @@ class MainActivity : AppCompatActivity() {
         convertResourcesButton = findViewById(R.id.convertResourcesButton)
 
         // Atualizar o saldo inicial na tela
-        atualizarSaldo()
+        if (!firstAttempt){
+            atualizarSaldo()
+        } else {
+            val editor = prefs.edit()
+            editor.clear() // This removes all key-value pairs
+            editor.apply() // Use apply() to asynchronously save changes
+            atualizarSaldo()
+        }
 
         // Listener para o botão de depósito
         depositButton.setOnClickListener {
@@ -53,6 +64,11 @@ class MainActivity : AppCompatActivity() {
         val prefs = getSharedPreferences("wallet", Context.MODE_PRIVATE)
         saldo = prefs.getFloat("BRL", 0f).toDouble()
         saldoTextView.text = "Saldo: R$ %.2f".format(saldo)
+
+        with(prefs.edit()) {
+            putBoolean("firstAttempt", true)
+            apply()
+        }
     }
 
 
